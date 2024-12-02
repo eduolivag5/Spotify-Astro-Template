@@ -1,11 +1,24 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import AlbumItemCard from '../components/AlbumItemCard.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { albumsData } from '../lib/albums';
 ---
 
 <Layout>
-	<Welcome />
+	<div id="playlist-container" class="relative h-full transition-all duration-300 bg-context p-4 md:p-10" style="--context-color:#134e4a;">
+    
+		<div class="relative z-10">
+		  <h2 class="text-lg md:text-2xl font-bold">Álbumes más populares</h2>
+		  <div class="mt-6">
+			<ul class="grid grid-cols-2 md:grid-cols-4 gap-2">
+				{albumsData.map((album) => (
+					<AlbumItemCard album={album} />
+				))}
+			</ul>
+		  </div>
+		</div>
+	
+		<div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/90">
+		</div>
+	  </div>
 </Layout>

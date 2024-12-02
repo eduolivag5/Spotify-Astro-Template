@@ -1,0 +1,42 @@
+---
+import type { Track } from "../lib/albums"
+
+const { albumData } = Astro.props;
+---
+
+<table class="w-full text-left">
+  <thead>
+    <tr class="text-gray-300 text-sm">
+      <th class="font-light pl-2 py-2">#</th>
+      <th class="font-light py-2">Titulo</th>
+      <th class="font-light py-2 text-right">Duración</th>
+    </tr>
+  </thead>
+  <tbody>
+    {albumData.tracks.map((track: Track, index: number) => (
+      <tr class="group hover:bg-gray-500/20 rounded-md">
+        <td class="pl-2 py-2 text-gray-300">{index + 1}</td>
+        <td class="py-2 flex gap-3 items-center">
+          <div class="h-10 w-10">
+            <img
+              src={albumData.cover}
+              alt={track.title}
+              class="rounded object-cover h-full w-full"
+            />
+          </div>
+          <div class="text-sm group hover:text-white">
+            <a href="#">
+              {track.title}
+            </a>
+            <div class="text-gray-400">
+              {albumData.artist}
+            </div>
+          </div>
+        </td>
+        <td class="text-sm px-4 py-2 text-right">
+          {track.duration}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

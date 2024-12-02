@@ -1,0 +1,33 @@
+---
+import type { Album } from "../lib/albums";
+import PlayButton from "./PlayButton.astro";
+
+interface Props {
+  album: Album
+}
+
+const { album } = Astro.props
+---
+
+<a
+    href={`/album/${album.id}`}
+    class="p-2 album-item flex justify-between group relative transition-all duration-300 items-center gap-2 rounded-md bg-zinc-500/20 hover:bg-zinc-500/50 focus:bg-zinc-500/50"
+    data-color={album.color.dark}
+>
+    <div class="flex items-center gap-2 md:gap-4">
+        <img
+            src={album.cover}
+            alt={album.name}
+            class="object-cover h-12 w-12 md:h-20 md:w-20 rounded-l-md"
+            transition:name=`album ${album.id} image`
+        />
+        <div class="font-semibold text-sm md:text-base line-clamp-2 leading-tight">
+            {album.name}
+        </div>
+    </div>  
+
+    <div class={"hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
+        <PlayButton />
+    </div>
+</a>
+

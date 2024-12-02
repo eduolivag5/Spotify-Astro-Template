@@ -1,0 +1,86 @@
+---
+import TracksTable from '../../components/TracksTable.astro';
+import Layout from '../../layouts/Layout.astro';
+import { albumsData } from '../../lib/albums';
+
+export async function getStaticPaths() {
+  return albumsData.map((album) => ({
+    params: { id: album.id },
+  }));
+}
+
+const { id } = Astro.params;
+const album = albumsData.find((album) => album.id === id);
+
+if (!album) {
+  throw new Error(`Álbum con ID "${id}" no encontrado.`);
+}
+---
+
+<Layout>
+  <div class="relative flex flex-col overflow-hidden">
+
+    <!-- Gradiente dentro del contenedor principal -->
+    <div
+      class="absolute inset-0 z-[-1] bg-gradient-to-b from-context"
+      style={`--context-color:${album.color.accent}`}
+    ></div>
+
+    <!-- Información del álbum -->
+    <div class="bg-zinc-900/60 p-6 flex flex-col md:flex-row gap-8 items-start md:items-end relative z-10">
+      <img
+        src={album.cover}
+        alt={album.name}
+        class="object-cover h-56 w-56 md:h-64 md:w-64 rounded-md shadow-lg"
+        transition:name={`album ${album?.id} image`}
+      />
+
+      <div class="flex flex-col gap-3 md:gap-6">
+        <span class="uppercase text-sm font-semibold text-gray-400">Álbum</span>
+        <h1 class="text-3xl md:text-5xl font-bold">{album.name}</h1>
+        <div class="text-gray-300">
+          <p class="font-medium">{album.artist}</p>
+          <p class="text-sm mt-1">
+            {album.releaseYear} &middot; {album.tracks.length} canciones
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones y contenido principal -->
+    <div class="bg-zinc-900/70 flex-1 p-6 relative z-10">
+      <div class="flex items-center gap-4">
+        <button class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400">
+          Reproducir
+        </button>
+        <button class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 5l-4 4m0 0l-4-4m4 4V3m0 10l4-4m-4 4l-4-4m4 4v7"
+            />
+          </svg>
+        </button>
+        <button class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tabla de canciones -->
+      <div class="mt-8">
+        <TracksTable albumData={album} />
+      </div>
+    </div>
+
+  </div>
+</Layout>
+

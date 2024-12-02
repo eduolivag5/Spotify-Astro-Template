@@ -1,3 +1,8 @@
+---
+import ViewTransitions from "astro/components/ViewTransitions.astro";
+import Sidebar from "../components/Sidebar.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,17 +11,130 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<ViewTransitions />
 	</head>
-	<body>
-		<slot />
+	<body class="h-screen flex flex-col">
+		<div class="flex-1 md:p-2 flex gap-2 overflow-y-auto">
+			<div class="hidden md:block w-96 bg-zinc-900 h-full rounded-lg overflow-y-auto">
+				<Sidebar />
+			</div>
+				
+			<div class="flex-1 md:rounded-lg overflow-y-auto">
+				<slot />
+			</div>
+		</div>
+
+		<div class="player h-20 min-h-20 w-full bg-gradient-to-r from-indigo-600 to-purple-700">
+			player
+		</div>
+
+		<script is:inline defer>
+			function setContainerColor(dataColor) {
+				const playlistContainer = document.getElementById("playlist-container");
+				const currentColor = playlistContainer?.getAttribute("data-color");
+				if (dataColor && dataColor !== currentColor) {
+				playlistContainer?.style.setProperty("--context-color", dataColor);
+				playlistContainer?.setAttribute("data-color", dataColor);
+				}
+			}
+	  
+			window.coloradTimeout = null;
+			for (const playlist of document.querySelectorAll(".playlist-item")) {
+			  playlist.addEventListener("mouseover", () =>
+				onMouseOverColorad(playlist)
+			  );
+			  playlist.addEventListener("mouseout", onMouseOutColorad);
+			  playlist.addEventListener("focus", () => onMouseFocusColorad(playlist));
+			  playlist.addEventListener("blur", onMouseOutColorad);
+			}
+	  
+			function onMouseFocusColorad(el) {
+			  if (el) {
+				const dataColor = el.getAttribute("data-color");
+				if (!dataColor) return;
+				setContainerColor(dataColor);
+			  }
+			}
+			function onMouseOverColorad(el) {
+			  if (el) {
+				const dataColor = el.getAttribute("data-color");
+				if (!dataColor) return;
+				window.coloradTimeout = setTimeout(
+				  () => setContainerColor(dataColor),
+				  200
+				);
+			  }
+			}
+			function onMouseOutColorad() {
+			  if (window.coloradTimeout) {
+				clearTimeout(window.coloradTimeout);
+				window.coloradTimeout = null;
+			  }
+			}
+		</script>
+		<script>
+			if (!document.startViewTransition) {
+			  document.getElementById("not-support")?.classList.remove("hidden");
+			}
+			document.addEventListener("astro:page-load", () => {
+			  for (const el of document.querySelectorAll(".el-to-fade")) {
+				el.classList.remove("scale-90");
+			  }
+			});
+		</script>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	html {
+		color: white;
+		font-family: 'Inter', sans-serif;
+		scroll-behavior: smooth;
 	}
+
+	:root {
+		--color-primary: theme(colors.green.500);
+		--color-background: theme(colors.zinc.950);
+		--color-foreground: theme(colors.zinc.900);
+		}
+	body {
+		background: var(--color-background);
+		color: white;
+		font-family: 'Inter', sans-serif;
+	}
+
+		* {
+		scrollbar-width: 10px;
+		scrollbar-color: rgb(50, 50, 50) rgb(30, 30, 30);
+		}
+		*::-webkit-scrollbar {
+		height: 10px;
+		width: 10px;
+		}
+		*::-webkit-scrollbar-track {
+		border-radius: 5px;
+		background-color: transparent;
+		}
+
+		*::-webkit-scrollbar-track:hover {
+		background-color: rgb(30, 30, 30);
+		}
+
+		*::-webkit-scrollbar-track:active {
+		background-color: rgb(30, 30, 30);
+		}
+
+		*::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background-color: rgb(50, 50, 50);
+		}
+
+		*::-webkit-scrollbar-thumb:hover {
+		background-color: rgb(70, 70, 70);
+		}
+
+		*::-webkit-scrollbar-thumb:active {
+		background-color: rgb(70, 70, 70);
+		}
+
 </style>
