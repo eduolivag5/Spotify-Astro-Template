@@ -13,7 +13,7 @@ import Sidebar from "../components/Sidebar.astro";
 		<title>Astro Basics</title>
 		<ViewTransitions />
 	</head>
-	<body class="h-screen flex flex-col">
+	<body class="h-full flex flex-col">
 		<div class="flex-1 md:p-2 flex gap-2 overflow-y-auto">
 			<div class="hidden md:block w-96 bg-zinc-900 h-full rounded-lg overflow-y-auto">
 				<Sidebar />
@@ -90,51 +90,58 @@ import Sidebar from "../components/Sidebar.astro";
 		color: white;
 		font-family: 'Inter', sans-serif;
 		scroll-behavior: smooth;
+		height: 100%;
 	}
 
 	:root {
 		--color-primary: theme(colors.green.500);
 		--color-background: theme(colors.zinc.950);
 		--color-foreground: theme(colors.zinc.900);
-		}
+		--app-height: 100dvh;
+	}
+
 	body {
 		background: var(--color-background);
 		color: white;
 		font-family: 'Inter', sans-serif;
+		height: var(--app-height);
+  		overflow: hidden;
 	}
 
-		* {
+	* {
 		scrollbar-width: 10px;
 		scrollbar-color: rgb(50, 50, 50) rgb(30, 30, 30);
-		}
-		*::-webkit-scrollbar {
+	}
+
+	*::-webkit-scrollbar {
 		height: 10px;
 		width: 10px;
-		}
-		*::-webkit-scrollbar-track {
+	}
+	
+	*::-webkit-scrollbar-track {
 		border-radius: 5px;
 		background-color: transparent;
-		}
+	}
 
-		*::-webkit-scrollbar-track:hover {
+	*::-webkit-scrollbar-track:hover {
 		background-color: rgb(30, 30, 30);
-		}
+	}
 
-		*::-webkit-scrollbar-track:active {
+	*::-webkit-scrollbar-track:active {
 		background-color: rgb(30, 30, 30);
-		}
+	}
 
-		*::-webkit-scrollbar-thumb {
+	*::-webkit-scrollbar-thumb {
 		border-radius: 5px;
 		background-color: rgb(50, 50, 50);
-		}
+	}
 
-		*::-webkit-scrollbar-thumb:hover {
+	*::-webkit-scrollbar-thumb:hover {
 		background-color: rgb(70, 70, 70);
-		}
+	}
 
-		*::-webkit-scrollbar-thumb:active {
+	*::-webkit-scrollbar-thumb:active {
 		background-color: rgb(70, 70, 70);
-		}
+	}
 
 </style>
