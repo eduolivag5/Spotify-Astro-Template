@@ -3,7 +3,10 @@ import { albumsData } from "../lib/albums";
 
 ---
 <div class="p-4">
-  <h1 class="text-2xl font-bold mb-4">Álbumes destacados</h1>
+  <div>
+    <h1 class="text-2xl font-bold mb-4">Álbumes destacados</h1>
+  </div>
+  
   <ul class="flex flex-wrap">
     {albumsData.map((album) => (
       <li class="playlist-item w-full p-2 hover:bg-zinc-800 transition duration-200 cursor-pointer rounded-md" data-color={album.color.dark}>

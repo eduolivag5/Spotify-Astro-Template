@@ -18,7 +18,7 @@ const { album } = Astro.props
         <img
             src={album.cover}
             alt={album.name}
-            class="object-cover h-12 w-12 md:h-20 md:w-20 rounded-l-md"
+            class="object-cover h-12 w-12 md:h-16 md:w-16 rounded-l-md"
             transition:name=`album ${album.id} image`
         />
         <div class="font-semibold text-sm md:text-base line-clamp-2 leading-tight">
@@ -26,7 +26,7 @@ const { album } = Astro.props
         </div>
     </div>  
 
-    <div class={"hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
+    <div class={"hidden xl:block opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
         <PlayButton />
     </div>
 </a>
