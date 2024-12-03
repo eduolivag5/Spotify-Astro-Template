@@ -1,6 +1,9 @@
 ---
 import ViewTransitions from "astro/components/ViewTransitions.astro";
 import Sidebar from "../components/Sidebar.astro";
+import Player from "../components/Player.astro";
+import NavBar from "../components/NavBar.astro";
+import NavBarMobile from "../components/NavBarMobile.astro";
 ---
 
 <!doctype html>
@@ -11,21 +14,33 @@ import Sidebar from "../components/Sidebar.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 		<ViewTransitions />
 	</head>
 	<body class="h-full flex flex-col">
-		<div class="flex-1 md:p-2 flex gap-2 overflow-y-auto">
+
+		<div class="flex items-center h-16 p-2">
+			<NavBar />
+		</div>
+
+		<div class="flex-1 md:px-2 flex gap-2 overflow-y-auto">
 			<div class="hidden md:block w-96 bg-zinc-900 h-full rounded-lg overflow-y-auto">
 				<Sidebar />
 			</div>
 				
-			<div class="flex-1 md:rounded-lg overflow-y-auto">
+			<div class="flex-1 rounded-lg overflow-y-auto">
 				<slot />
 			</div>
 		</div>
 
-		<div class="player h-20 min-h-20 w-full bg-gradient-to-r from-indigo-600 to-purple-700">
-			player
+		<div class="md:mt-2 h-14 md:h-20 w-full">
+			<Player />
+		</div>
+
+		<div class="mt-2 h-16 w-full md:hidden">
+			<NavBarMobile />
 		</div>
 
 		<script is:inline defer>
@@ -88,7 +103,7 @@ import Sidebar from "../components/Sidebar.astro";
 <style>
 	html {
 		color: white;
-		font-family: 'Inter', sans-serif;
+		font-family: 'Noto Sans', sans-serif;
 		scroll-behavior: smooth;
 		height: 100%;
 	}
@@ -102,8 +117,6 @@ import Sidebar from "../components/Sidebar.astro";
 
 	body {
 		background: var(--color-background);
-		color: white;
-		font-family: 'Inter', sans-serif;
 		height: var(--app-height);
   		overflow: hidden;
 	}

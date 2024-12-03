@@ -1,0 +1,7 @@
+---
+const { text, active } = Astro.props;
+---
+
+<span class={`inline-flex items-center rounded-full ${active ? 'bg-green-500 text-black' : 'bg-gray-800'} px-4 py-2 text-xs font-medium`}>
+  {text}
+</span>

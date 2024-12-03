@@ -151,5 +151,34 @@ export const albumsData: Album[] = [
             { title: "HASTA LUEGO", duration: "3:02" }
         ],
     },
+    {
+        id: "5U2vQHhRZEq6J6gzHTdfbO",
+        cover: "https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72",
+        name: "Un verano sin ti",
+        artist: "Bad Bunny",
+        releaseYear: 2022,
+        color: colors.yellow,
+        tracks: [
+            { title: "EL MUNDO ES MIO", duration: "3:52" },
+            { title: "YA ME FUI", duration: "3:15" },
+            { title: "VEN ENSEÑAME", duration: "3:46" },
+            { title: "LO QUE PASO PASO", duration: "4:10" },
+            { title: "BANG BANG", duration: "3:13" },
+            { title: "SOBREDOSIS", duration: "4:30" },
+            { title: "TENGO", duration: "2:51" },
+            { title: "YA NO TE VEO", duration: "3:22" },
+            { title: "NO VUELVAS", duration: "4:01" },
+            { title: "UN PELO", duration: "3:27" },
+            { title: "ME DEJASTE", duration: "2:49" },
+            { title: "EL PUEBLO", duration: "3:56" },
+            { title: "AL PRINCIPIO", duration: "4:08" },
+            { title: "DESPUES DE ESTA", duration: "3:45" },
+            { title: "CONQUISTANDO", duration: "4:22" },
+            { title: "CERO", duration: "3:59" },
+            { title: "SIGO", duration: "3:33" },
+            { title: "TE LO DIJE", duration: "4:04" },
+            { title: "LIBERACION", duration: "5:01" }
+        ],
+    },
 ];
   

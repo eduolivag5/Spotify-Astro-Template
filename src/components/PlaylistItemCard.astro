@@ -1,0 +1,36 @@
+---
+import { PlayCircleIcon } from "@heroicons/react/24/solid";
+import type { Playlist } from "../lib/playlist";
+
+interface Props {
+  playlist: Playlist;
+}
+
+const { playlist } = Astro.props;
+---
+<a
+    href={`/playlist/${playlist.id}`}
+    class="p-1 playlist-item flex justify-between group relative transition-all duration-300 items-center gap-2 rounded-md hover:bg-zinc-800"
+    data-color={playlist.color.dark}
+>
+    <div class="flex items-center gap-2">
+
+        <div class="relative flex-shrink-0">
+            <img
+                src={playlist.cover}
+                alt={playlist.name}
+                class="object-cover h-10 w-10 md:h-14 md:w-14 rounded-md group-hover:brightness-50 transition-all duration-300"
+                transition:name={`album ${playlist?.id} image`}
+            />
+
+            <button class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-zinc-800/20 rounded-l-md p-4 text-white">
+                <PlayCircleIcon />
+            </button>
+        </div>
+
+        <div class="flex flex-col gap-1">
+            <span class="font-semibold text-sm line-clamp-1">{playlist.name}</span>
+            <span class="text-gray-300 text-xs line-clamp-1">{playlist.artists.join(', ')}</span>
+        </div>
+    </div>
+</a>

@@ -1,0 +1,64 @@
+---
+import { albumsData } from '../lib/albums';
+---
+
+<div class="justify-between h-full mx-auto flex items-center px-4 bg-indigo-950">
+
+    <div id="player-info" class="flex gap-2 items-center">
+        <img src={albumsData[0].cover} alt="Album cover" class="w-10 h-10 md:w-14 md:h-14 rounded-md" />
+        <div class="flex flex-col">
+            <span class="text-sm md:text-base font-semibold">{albumsData[0].tracks[12].title}</span>
+            <span class="text-xs text-gray-300">{albumsData[0].artist}</span>
+        </div>
+    </div>
+
+    <div id="player-progress" class="w-full max-w-lg hidden md:flex flex-col gap-2 items-center">
+        <div class="flex gap-3 items-center">
+            
+            <button >
+                <img src="/icons/arrows-shuffle.svg" alt="Play" />
+            </button>
+            <button class="hidden md:block">
+                <img src="/icons/player-skip-back.svg" alt="Play" />
+            </button>
+            <button>
+                <img src="/icons/player-play.svg" alt="Play" />
+            </button>
+            <button class="hidden md:block">
+                <img src="/icons/player-skip-forward.svg" alt="Play" />
+            </button>
+        </div>
+        
+        <div id="progress-bar" class="hidden md:block w-full h-1 bg-gray-700 rounded-md mt-2">
+            <div class="bg-green-500 h-1 rounded-md" style="width: 50%;"></div>
+        </div>
+    </div>
+
+    <div id="player-controls" class="hidden md:flex gap-2 items-center">
+        <button>
+            <img src="/icons/device-speaker.svg" alt="Device" />
+        </button>
+        <button>
+            <img src="/icons/volume.svg" alt="Volume" />
+        </button>
+        <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            class="w-24 h-1 bg-gray-700 rounded-md appearance-none cursor-pointer"
+        />
+    </div>
+
+    <div id="mobile-player-controls" class="md:hidden flex gap-2 items-center">
+        <button>
+            <img src="/icons/device-speaker.svg" alt="Device" />
+        </button>
+        <button >
+            <img src="/icons/arrows-shuffle.svg" alt="Play" />
+        </button>
+        <button>
+            <img src="/icons/player-play.svg" alt="Play" />
+        </button>
+    </div>
+</div>

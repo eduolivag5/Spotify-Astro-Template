@@ -1,0 +1,30 @@
+---
+import Badge from "./Badge.astro";
+
+import { HomeIcon } from "@heroicons/react/24/solid"
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
+---
+<div class="relative flex justify-between w-full items-center md:px-4 h-16">
+
+    <div class="flex gap-2 items-center">
+        <Badge text="Todos" active={true} />
+        <Badge text="Me gusta" active={false} />
+        <Badge text="Recientes" active={false} />
+    </div>
+
+    <div class="absolute w-1/3 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-4 items-center">
+        <a href="/" class="hidden px-4 md:block p-2 rounded-full bg-gray-800">
+            <HomeIcon className="text-white w-6 h-6" />
+        </a>
+    
+        <div class="flex-1 hidden md:flex items-center gap-4 bg-gray-800 py-2 px-4 rounded-full">
+            <MagnifyingGlassIcon className="w-6 h-6" />
+            <input type="text" placeholder="¿Qué quieres reproducir?" class="flex-1 text-sm bg-transparent" />
+        </div>
+    </div>
+
+    <button class="py-1 px-3 rounded-full bg-purple-400 text-black font-medium">
+        E
+    </button>
+</div>
