@@ -1,21 +1,21 @@
 ---
 import { PlusCircleIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-import TracksTable from '../../components/AlbumTracksTable.astro';
+import TracksTable from '../../components/PlaylistTracksTable.astro';
 import Layout from '../../layouts/Layout.astro';
-import { albumsData } from '../../lib/albums';
+import { playlistsData } from "../../lib/playlist";
 
 export async function getStaticPaths() {
-  return albumsData.map((album) => ({
-    params: { id: album.id },
+  return playlistsData.map((playlist) => ({
+    params: { id: playlist.id },
   }));
 }
 
 const { id } = Astro.params;
-const album = albumsData.find((album) => album.id === id);
+const playlist = playlistsData.find((playlist) => playlist.id === id);
 
-if (!album) {
-  throw new Error(`Álbum con ID "${id}" no encontrado.`);
+if (!playlist) {
+  throw new Error(`Playlist con ID "${id}" no encontrado.`);
 }
 ---
 
@@ -25,11 +25,11 @@ if (!album) {
     <!-- Gradiente dentro del contenedor principal -->
     <div
       class="absolute inset-0 z-[-1] bg-gradient-to-b from-context"
-      style={`--context-color:${album.color.accent}`}
+      style={`--context-color:${playlist.color.accent}`}
     ></div>
 
 
-    <!-- Información del álbum -->
+    <!-- Información de la playlist -->
     <div class="bg-zinc-900/60 p-6 flex flex-col gap-4 items-start relative z-10">
       <a href="/" class="md:hidden p-2 rounded-full bg-zinc-800">
         <img src="/icons/chevron-left.svg" alt="Volver" />
@@ -37,22 +37,22 @@ if (!album) {
 
       <div class="flex flex-row gap-4">
         <img
-          src={album.cover}
-          alt={album.name}
+          transition:name={`playlist ${playlist?.id} image`}
+          src={playlist.cover}
+          alt={playlist.name}
           class="object-cover h-40 w-40 min-w-32 md:h-52 md:w-52 rounded-md shadow-lg"
-          transition:name={`album ${album?.id} image`}
         />
         
 
         <div class="flex flex-col justify-end">
-          <span class="uppercase text-sm font-semibold text-gray-400">Álbum</span>
-          <h1 class="text-2xl md:text-6xl md:mb-4 font-bold" transition:name={`album ${album?.id} title`}>
-            {album.name}
+          <span class="uppercase text-sm font-semibold text-gray-400">Playlist</span>
+          <h1 class="text-2xl md:text-6xl font-bold md:mb-4">
+            {playlist.name}
           </h1>
           <div class="text-gray-300">
-            <p class="font-medium">{album.artist}</p>
+            <p class="font-medium">{playlist.artists.join(", ")}</p>
             <p class="text-sm mt-1">
-              {album.releaseYear} &middot; {album.tracks.length} canciones
+              {playlist.tracks.length} canciones
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ if (!album) {
 
       <!-- Tabla de canciones -->
       <div class="mt-8">
-        <TracksTable albumData={album} />
+        <TracksTable playlist={playlist} />
       </div>
     </div>
 

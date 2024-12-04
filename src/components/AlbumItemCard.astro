@@ -28,7 +28,9 @@ const { album } = Astro.props;
             </button>
         </div>
 
-        <div class="font-semibold text-xs md:text-sm line-clamp-2 leading-tight flex-1">
+        <div class="font-semibold text-xs md:text-sm line-clamp-2 leading-tight flex-1"
+            transition:name={`album ${album?.id} title`}
+        >
             {album.name}
         </div>
     </div>
