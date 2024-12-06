@@ -9,6 +9,15 @@ import {
 import { PlayIcon, BackwardIcon, ForwardIcon } from "@heroicons/react/24/solid";
 
 import { albumsData } from "../lib/albums";
+import { tracksData } from "../lib/tracks";
+import { artistsData } from "../lib/artist";
+
+const track = tracksData.find(track => track.name === "SHIBATTO");
+const artist = artistsData.find(artist => artist.id === track?.artist);
+const album = albumsData.find(album => album.id === track?.album);
+
+console.log(artist, track, album);
+
 ---
 
 
@@ -16,13 +25,13 @@ import { albumsData } from "../lib/albums";
 
     <div id="player-info" class="flex gap-2 items-center">
       <div class="w-10 h-10 md:w-14 md:h-14 rounded-md bg-gray-800 flex items-center justify-center">
-        <img src={albumsData[0].cover} alt="album cover" class="rounded-md" />
+        <img src={album?.cover} alt="album cover" class="rounded-md" />
       </div>
       <div class="flex flex-col">
         <span class="text-sm md:text-base font-semibold">
-          {albumsData[0].tracks[12].title}
+          {track?.name}
         </span>
-        <span class="text-xs text-gray-300">{albumsData[0].artist}</span>
+        <span class="text-xs text-gray-300">{artist?.name}</span>
       </div>
     </div>
   

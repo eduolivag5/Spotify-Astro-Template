@@ -17,13 +17,11 @@ const { playlist } = Astro.props;
       <tr class="group hover:bg-gray-500/20 rounded-md">
         <td class="p-2 text-sm text-gray-300">{index + 1}</td>
         <td class="p-2 flex gap-3 items-center">
-          <div class="h-10 w-10">
-            <img
-              src={playlist.cover}
-              alt={track.title}
-              class="rounded object-cover h-full w-full"
-            />
-          </div>
+          <img
+            src={playlist.cover}
+            alt={track.title}
+            class="rounded object-cover h-10 w-10"
+          />
           <div class="text-sm group hover:text-white">
             <a href="#" class="font-semibold">
               {track.title}

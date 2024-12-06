@@ -1,7 +1,6 @@
 ---
 import { Squares2X2Icon } from "@heroicons/react/24/outline"; 
 import { PlusIcon, ArrowRightIcon  } from "@heroicons/react/24/solid";
-import { playlistsData, type Playlist } from "../lib/playlist";
 import PlaylistItemCard from "./PlaylistItemCard.astro";
 ---
 <div class="p-4">
@@ -16,12 +15,12 @@ import PlaylistItemCard from "./PlaylistItemCard.astro";
         </div>
     </div>
 
-    <div class="mt-4">
+    {/* <div class="mt-4">
         <ul class="flex flex-col gap-1">
             {playlistsData.map((playlist: Playlist) => (
                 <PlaylistItemCard playlist={playlist} />
             ))}
         </ul>
     </div>
-    
+    */}
 </div>

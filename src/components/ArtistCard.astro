@@ -1,0 +1,32 @@
+---
+import { PlayCircleIcon } from "@heroicons/react/24/solid";
+import type { Artist } from "../lib/artist";
+
+interface Props {
+  artist: Artist;
+}
+
+const { artist } = Astro.props;
+---
+<a
+    href={`/artist/${artist.id}`}
+    class="p-2 flex-shrink-0 flex justify-between group relative transition-all duration-300 items-center gap-2 rounded-md hover:bg-zinc-800"
+>
+    <div class="flex flex-col gap-2">
+        <div class="relative flex-shrink-0">
+            <img
+                transition:name={`artist ${artist.id} image`}
+                src={artist.photo}
+                alt={artist.name}
+                class="object-cover w-32 h-32 md:w-40 md:h-40 rounded-full group-hover:brightness-50 transition-all duration-300"
+            />
+            <button class="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-zinc-800/20 text-white rounded-full">
+                <PlayCircleIcon className="h-8 w-8 md:h-14 md:w-14" />
+            </button>
+        </div>
+        <div>
+            <span class="font-semibold text-sm line-clamp-1">{artist.name}</span>
+        </div>
+    </div>
+</a>
+

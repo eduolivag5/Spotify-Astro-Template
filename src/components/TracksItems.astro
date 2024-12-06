@@ -1,0 +1,16 @@
+---
+import { PlusCircleIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { PlayIcon } from "@heroicons/react/24/solid";
+---
+<div class="flex items-center gap-4">
+    <button class="bg-green-500 flex gap-2 text-black px-6 py-2 rounded-full font-semibold hover:scale-105 transition duration-200 hover:bg-green-600">
+        <PlayIcon className="h-6 w-6" />
+        Reproducir
+    </button>
+    <button class="text-gray-400 hover:text-white hover:scale-105 transition duration-200">
+        <PlusCircleIcon className="h-6 w-6" />
+    </button>
+    <button class="text-gray-400 hover:text-white hover:scale-105 transition duration-200">
+        <CheckIcon className="h-6 w-6" />
+    </button>
+</div>

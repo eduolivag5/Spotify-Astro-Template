@@ -1,0 +1,67 @@
+---
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
+import TracksTable from '../../components/TracksTable.astro';
+import Layout from '../../layouts/Layout.astro';
+import { artistsData } from '../../lib/artist';
+import { tracksData } from '../../lib/tracks';
+import { albumsData } from '../../lib/albums';
+import AlbumItemCard from '../../components/AlbumItemCard.astro';
+
+export async function getStaticPaths() {
+  return artistsData.map((artist) => ({
+    params: { id: artist.id },
+  }));
+}
+
+const { id } = Astro.params;
+const artist = artistsData.find((artist) => artist.id === id);
+
+if (!artist) {
+  throw new Error(`Artista con ID "${id}" no encontrado.`);
+}
+
+const topTracks = tracksData.filter(track => track.artist === artist.id).slice(0, 5);
+
+---
+
+<Layout>
+  <div class="relative flex flex-col overflow-hidden">
+
+    <!-- Información del artista -->
+    <div class="w-full relative h-64">
+      <img 
+        src={artist.photo} 
+        transition:name={`artist ${artist.id} image`} 
+        class="h-full w-full object-cover object-top"
+      />
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="absolute inset-0 flex items-end p-4">
+        <span class="text-4xl md:text-5xl font-bold">{artist.name}</span>
+      </div>
+    </div>
+
+    <!-- Botones y contenido principal -->
+    <div class="bg-zinc-900/70 flex-1 p-6 flex flex-col gap-8 relative z-10">
+
+      <div>
+        <h1 class="text-xl font-bold mb-2">Canciones más escuchadas</h1>
+        <TracksTable tracks={topTracks} />
+      </div>
+
+      <div>
+        <h1 class="text-xl font-bold mb-2">Álbumes populares</h1>
+        {artist.topAlbums.map((topAlbum) => {
+          const albumData = albumsData.find(album => album.id === topAlbum);
+
+          return (
+            <AlbumItemCard album={albumData} />
+          )
+        })}
+      </div>
+
+    </div>
+
+  </div>
+  
+  
+</Layout>
