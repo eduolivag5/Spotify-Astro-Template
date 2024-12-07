@@ -1,42 +1,49 @@
 ---
 import type { Track } from "../lib/types";
 import {artistsData} from "../lib/artist";
+import PlayIcon from "@heroicons/react/24/solid/PlayIcon";
 
 // Aquí se obtienen las canciones y los artistas de las propiedades de Astro
 const { tracks } = Astro.props;
-console.log(tracks)
 ---
-
 <table class="w-full text-left">
   <thead>
     <tr class="text-gray-300 text-sm">
-      <th class="font-light p-2">#</th>
-      <th class="font-light p-2">Titulo</th>
+      <th class="font-light p-2 w-8 max-w-8">#</th>
+      <th class="font-light p-2">Título</th>
       <th class="font-light p-2 text-right">Duración</th>
     </tr>
   </thead>
   <tbody>
     {tracks.map((track: Track, index: number) => {
-        const artist = artistsData.find(artist => artist.id === track.artist);
-        
-        return (
-          <tr class="group hover:bg-gray-500/20 rounded-md">
-            <td class="p-2 text-sm text-gray-300">{index + 1}</td>
-            <td class="p-2 flex gap-3 items-center">
-              <div class="text-sm group hover:text-white">
-                <a href="#" class="font-semibold">
-                  {track.name}
-                </a>
-                <div class="text-gray-400">
-                  {artist ? artist.name : "Unknown Artist"}
-                </div>
+      const artist = artistsData.find(artist => artist.id === track.artist);
+
+      return (
+        <tr class="group hover:bg-gray-500/20 rounded-md">
+          {/* Índice o ícono de Play */}
+          <td class="p-2 text-sm text-gray-300 relative">
+            <span class="group-hover:hidden">{index + 1}</span>
+            <PlayIcon className="h-4 w-4 hidden group-hover:block" />
+          </td>
+
+          {/* Título y Artista */}
+          <td class="p-2 flex gap-3 items-center">
+            <div class="text-sm group hover:text-white">
+              <a href="#" class="font-semibold">
+                {track.name}
+              </a>
+              <div class="text-gray-400">
+                {artist ? artist.name : "Unknown Artist"}
               </div>
-            </td>
-            <td class="text-sm p-2 text-right">
-              {track.duration}
-            </td>
-          </tr>
-        );
-      })}
+            </div>
+          </td>
+
+          {/* Duración */}
+          <td class="text-sm p-2 text-right">
+            {track.duration}
+          </td>
+        </tr>
+      );
+    })}
   </tbody>
 </table>

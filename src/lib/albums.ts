@@ -50,4 +50,44 @@ export const albumsData: Album[] = [
         releaseYear: 2022,
         color: colors.yellow
     },  
+    {
+        id: "Melendi_album_001",
+        cover: "https://i.scdn.co/image/ab67616d0000b2734f6726623ac5818a1a1f945a",
+        name: "20 años sin noticias",
+        artist: "Melendi_artist",
+        releaseYear: 2024,
+        color: colors.gray
+    },  
+    {
+        id: "Mora_album_001",
+        cover: "https://i.scdn.co/image/ab67616d0000b273076ef0fed51ff7a4911459e9",
+        name: "Paraíso",
+        artist: "Mora_artist",
+        releaseYear: 2022,
+        color: colors.yellow
+    },  
+    {
+        id: "Mora_album_002",
+        cover: "https://i.scdn.co/image/ab67616d0000b2734cc96ed1e38fa517608c2fb0",
+        name: "Estrella",
+        artist: "Mora_artist",
+        releaseYear: 2023,
+        color: colors.blue
+    },  
+    {
+        id: "Estopa_album_001",
+        cover: "https://i.scdn.co/image/ab67616d0000b2731a311570340a4f6530da158b",
+        name: "Estopa",
+        artist: "Estopa_artist",
+        releaseYear: 1999,
+        color: colors.blue
+    },  
+    {
+        id: "ElCantoDelLoco_album_001",
+        cover: "https://akamai.sscdn.co/letras/360x360/albuns/4/5/0/2/5552.jpg",
+        name: "Zapatillas",
+        artist: "ElCantoDelLoco_artist",
+        releaseYear: 2005,
+        color: colors.green
+    },  
 ]

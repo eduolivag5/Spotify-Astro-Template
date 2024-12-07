@@ -1,6 +1,6 @@
 ---
 import { PlayCircleIcon } from "@heroicons/react/24/solid";
-import type { Artist } from "../lib/artist";
+import type { Artist } from "../lib/types";
 
 interface Props {
   artist: Artist;
@@ -15,7 +15,6 @@ const { artist } = Astro.props;
     <div class="flex flex-col gap-2">
         <div class="relative flex-shrink-0">
             <img
-                transition:name={`artist ${artist.id} image`}
                 src={artist.photo}
                 alt={artist.name}
                 class="object-cover w-32 h-32 md:w-40 md:h-40 rounded-full group-hover:brightness-50 transition-all duration-300"

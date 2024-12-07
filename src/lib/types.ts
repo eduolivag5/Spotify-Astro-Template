@@ -21,6 +21,7 @@ export interface Artist {
     id: string;
     name: string;
     photo: string;
+    header: string;
     topTracks: Track['id'][];
     topAlbums: Album['id'][];
 }
@@ -31,5 +32,5 @@ export interface Playlist {
     name: string;
     artists: Artist['id'][];
     color: typeof colors[keyof typeof colors];
-    tracks: Track['id'][];
+    tracks: Track[];
 }

@@ -1,11 +1,10 @@
 ---
-import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import TracksTable from '../../components/TracksTable.astro';
 import Layout from '../../layouts/Layout.astro';
 import { artistsData } from '../../lib/artist';
 import { tracksData } from '../../lib/tracks';
 import { albumsData } from '../../lib/albums';
-import AlbumItemCard from '../../components/AlbumItemCard.astro';
+import AlbumCard from '../../components/AlbumCard.astro';
 
 export async function getStaticPaths() {
   return artistsData.map((artist) => ({
@@ -28,11 +27,10 @@ const topTracks = tracksData.filter(track => track.artist === artist.id).slice(0
   <div class="relative flex flex-col overflow-hidden">
 
     <!-- Información del artista -->
-    <div class="w-full relative h-64">
+    <div class="w-full relative h-64 lg:h-80">
       <img 
-        src={artist.photo} 
-        transition:name={`artist ${artist.id} image`} 
-        class="h-full w-full object-cover object-top"
+        src={`/header_artists/${artist.header}`}
+        class="h-full w-full object-cover"
       />
       <div class="absolute inset-0 bg-black opacity-50"></div>
       <div class="absolute inset-0 flex items-end p-4">
@@ -48,16 +46,21 @@ const topTracks = tracksData.filter(track => track.artist === artist.id).slice(0
         <TracksTable tracks={topTracks} />
       </div>
 
-      <div>
-        <h1 class="text-xl font-bold mb-2">Álbumes populares</h1>
-        {artist.topAlbums.map((topAlbum) => {
-          const albumData = albumsData.find(album => album.id === topAlbum);
+      {artist.topAlbums.length > 0 && (
+        <div>
+          <h1 class="text-xl font-bold mb-2">Álbumes populares</h1>
+          <div class="flex flex-wrap gap-2">
+            {artist.topAlbums.map((topAlbum) => {
+              const albumData = albumsData.find(album => album.id === topAlbum);
 
-          return (
-            <AlbumItemCard album={albumData} />
-          )
-        })}
-      </div>
+              if (albumData) {
+                return <AlbumCard album={albumData} />
+              }
+            })}
+          </div>
+        </div>
+      )}
+      
 
     </div>
 

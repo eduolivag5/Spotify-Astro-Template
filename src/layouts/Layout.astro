@@ -11,9 +11,9 @@ import NavBarMobile from "../components/NavBarMobile.astro";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Spotify with Astro</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -117,44 +117,17 @@ import NavBarMobile from "../components/NavBarMobile.astro";
 
 	body {
 		background: var(--color-background);
-		height: var(--app-height);
-  		overflow: hidden;
+		height: 100%;
+		overflow: hidden; /* Evita el desplazamiento global */
 	}
 
 	* {
-		scrollbar-width: none;
-		scrollbar-color: rgb(50, 50, 50) rgb(30, 30, 30);
+		scrollbar-width: none; /* Firefox */
+		scrollbar-color: rgb(50, 50, 50) rgb(30, 30, 30); /* Firefox */
 	}
 
 	*::-webkit-scrollbar {
-		height: 5px;
-		width: 5px;
-	}
-	
-	*::-webkit-scrollbar-track {
-		border-radius: 2px;
-		background-color: transparent;
-	}
-
-	*::-webkit-scrollbar-track:hover {
-		background-color: rgb(30, 30, 30);
-	}
-
-	*::-webkit-scrollbar-track:active {
-		background-color: rgb(30, 30, 30);
-	}
-
-	*::-webkit-scrollbar-thumb {
-		border-radius: 5px;
-		background-color: rgb(50, 50, 50);
-	}
-
-	*::-webkit-scrollbar-thumb:hover {
-		background-color: rgb(70, 70, 70);
-	}
-
-	*::-webkit-scrollbar-thumb:active {
-		background-color: rgb(70, 70, 70);
+		display: none; /* Chrome, Safari, Opera */
 	}
 
 </style>

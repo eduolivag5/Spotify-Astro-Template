@@ -12,11 +12,10 @@ import { albumsData } from "../lib/albums";
 import { tracksData } from "../lib/tracks";
 import { artistsData } from "../lib/artist";
 
-const track = tracksData.find(track => track.name === "SHIBATTO");
+const idTrackReproduciendo = "Quevedo018";
+const track = tracksData.find(track => track.id === idTrackReproduciendo);
 const artist = artistsData.find(artist => artist.id === track?.artist);
 const album = albumsData.find(album => album.id === track?.album);
-
-console.log(artist, track, album);
 
 ---
 

@@ -2,10 +2,12 @@
 import { Squares2X2Icon } from "@heroicons/react/24/outline"; 
 import { PlusIcon, ArrowRightIcon  } from "@heroicons/react/24/solid";
 import PlaylistItemCard from "./PlaylistItemCard.astro";
+import { playlistsData } from "../lib/playlist";
+import type { Playlist } from "../lib/types";
 ---
 <div class="p-4">
     <div class="flex justify-between items-center text-gray-300">
-        <div class="flex gap-2 items-center hover:text-white cursor-pointer">
+        <div class="flex gap-2 items-center">
             <Squares2X2Icon className="w-10 h-10" />
             <span class="text-lg font-bold">Tu biblioteca</span>
         </div>
@@ -15,12 +17,12 @@ import PlaylistItemCard from "./PlaylistItemCard.astro";
         </div>
     </div>
 
-    {/* <div class="mt-4">
+    <div class="mt-4">
         <ul class="flex flex-col gap-1">
             {playlistsData.map((playlist: Playlist) => (
-                <PlaylistItemCard playlist={playlist} />
+                <PlaylistItemCard playlist={playlist} sidebar={true} />
             ))}
         </ul>
     </div>
-    */}
+    
 </div>

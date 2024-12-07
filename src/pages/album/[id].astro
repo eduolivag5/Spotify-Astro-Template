@@ -5,6 +5,7 @@ import TracksItems from '../../components/TracksItems.astro';
 import Layout from '../../layouts/Layout.astro';
 import { albumsData } from '../../lib/albums';
 import { tracksData } from '../../lib/tracks';
+import { artistsData } from '../../lib/artist';
 
 export async function getStaticPaths() {
   return albumsData.map((album) => ({
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const album = albumsData.find((album) => album.id === id);
+const albumArtist = artistsData.find(artist => artist.id === album?.artist);
 
 if (!album) {
   throw new Error(`Álbum con ID "${id}" no encontrado.`);
@@ -48,7 +50,6 @@ const filteredTracks = tracksData.filter(track => track.album === album.id);
             src={album.cover}
             alt={album.name}
             class="object-cover h-full w-40 min-w-40 md:w-52 md:min-w-52 rounded-md shadow-lg"
-            transition:name={`album ${album?.id} image`}
           />  
         </div>
         
@@ -56,11 +57,15 @@ const filteredTracks = tracksData.filter(track => track.album === album.id);
 
         <div class="flex flex-col justify-end w-full">
           <span class="hidden md:block uppercase text-sm font-semibold text-gray-400">Álbum</span>
-          <h1 class="text-xl md:text-5xl mb-1 md:mb-3 font-bold" transition:name={`album ${album?.id} title`}>
+          <h1 class="text-xl md:text-5xl mb-1 md:mb-3 font-bold">
             {album.name}
           </h1>
           <div class="text-gray-300">
-            <p class="text-sm font-medium">{album.artist}</p>
+            <a href={`/artist/${albumArtist?.id}`} class="flex items-center gap-2 hover:text-white">
+              <img src={albumArtist?.photo} class="h-6 w-6 rounded-full" alt={albumArtist?.name} />
+              <span class="text-sm font-medium">{albumArtist?.name}</span>
+            </a>
+            
             <p class="hidden md:block text-sm mt-1">
               {album.releaseYear} &middot; {filteredTracks.length} canciones
             </p>

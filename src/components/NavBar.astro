@@ -1,6 +1,4 @@
 ---
-import Badge from "./Badge.astro";
-
 import { HomeIcon } from "@heroicons/react/24/solid"
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import HeaderContainer from "./HeaderContainer.astro";
@@ -8,7 +6,10 @@ import HeaderContainer from "./HeaderContainer.astro";
 ---
 <div class="relative flex justify-between w-full items-center md:px-4 h-16">
 
-    <img src="/download.svg" class="hidden md:block w-8 h-8" alt="Logo de Spotify" />
+    <a href="/" class="hidden md:block">
+        <img src="/download.svg" class="w-8 h-8" alt="Logo de Spotify" />
+    </a>
+    
     
     <div class="md:hidden">
         <HeaderContainer />

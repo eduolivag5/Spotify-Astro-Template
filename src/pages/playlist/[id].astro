@@ -4,6 +4,7 @@ import TracksTable from '../../components/TracksTable.astro';
 import TracksItems from '../../components/TracksItems.astro';
 import Layout from '../../layouts/Layout.astro';
 import { playlistsData } from '../../lib/playlist';
+import { artistsData } from '../../lib/artist';
 
 export async function getStaticPaths() {
   return playlistsData.map((playlist) => ({
@@ -17,6 +18,8 @@ const playlist = playlistsData.find((playlist) => playlist.id === id);
 if (!playlist) {
   throw new Error(`Álbum con ID "${id}" no encontrado.`);
 }
+
+const playlistArtists = playlist.artists.map(artistId => artistsData.find(artist => artist.id === artistId));
 ---
 
 <Layout>
@@ -44,7 +47,6 @@ if (!playlist) {
             src={playlist.cover}
             alt={playlist.name}
             class="object-cover h-full w-40 min-w-40 md:w-52 md:min-w-52 rounded-md shadow-lg"
-            transition:name={`playlist ${playlist?.id} image`}
           />  
         </div>
         
@@ -56,12 +58,23 @@ if (!playlist) {
             {playlist.name}
           </h1>
           <div class="text-gray-300">
-            <p class="text-sm font-medium">{playlist.artists.join(", ")}</p>
+            <div class="flex items-center gap-4">
+              {playlistArtists.map(artist => (
+                <a href={`/artist/${artist?.id}`} class="flex items-center gap-1 hover:text-white">
+                  <img src={artist?.photo} class="h-6 w-6 rounded-full" alt={artist?.name} />
+                  <span class="text-sm font-medium">{artist?.name}</span>
+                </a>
+              ))}
+
+            </div>
+            
+
             <p class="hidden md:block text-sm mt-1">
               {playlist.tracks.length} canciones
             </p>
             <p class="md:hidden text-xs mt-1">
               Playlist
+              <span>&middot; {playlist.tracks.length} canciones</span>
             </p>
           </div>
         </div>

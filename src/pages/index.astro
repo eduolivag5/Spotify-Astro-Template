@@ -1,48 +1,58 @@
 ---
 import AlbumItemCard from '../components/AlbumItemCard.astro';
 import HeaderContainer from '../components/HeaderContainer.astro';
-import PlaylistCard from '../components/PlaylistCard.astro';
 import Layout from '../layouts/Layout.astro';
 import { albumsData } from '../lib/albums';
 import { artistsData } from "../lib/artist";
 import ArtistCard from '../components/ArtistCard.astro';
 import AlbumCard from '../components/AlbumCard.astro';
+import { playlistsData } from '../lib/playlist';
+import PlaylistItemCard from '../components/PlaylistItemCard.astro';
 ---
 
 <Layout>
-	<div id="playlist-container" class="relative min-h-full transition-all duration-300 bg-context p-4" style="--context-color:#134e4a;">
+	<div id="playlist-container" class="relative min-h-full transition-all duration-300 bg-context px-2 py-4 md:p-4" style="--context-color:#134e4a;">
     
 		<div class="hidden md:block mb-4">
 			<HeaderContainer />
 		</div>
 		
 		
-		<div class="relative z-10 space-y-10">
-			{/*
+		<div class="relative z-10 space-y-6">
+			
 			<div>
 				<ul class="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2">
-					{albumsData.map((album) => (
+					{playlistsData.map((playlist) => (
+						<PlaylistItemCard playlist={playlist} />
+					))}
+					{albumsData.sort(() => Math.random() - 0.5).slice(0, 8 - playlistsData.length).map((album) => (
 						<AlbumItemCard album={album} />
 					))}
 				</ul>
 			</div>
-			*/}
+
 
 			<div>
 				<h1 class="text-2xl font-bold">Tus artistas más escuchados</h1>
-				<ul class="flex py-4 gap-2 overflow-x-auto">
-					{artistsData.map((artist) => (
-						<ArtistCard artist={artist} />						
-					))}
-				</ul>
+				<ul class="flex py-4 gap-2 overflow-x-auto hidde-scrollbar">
+					{artistsData
+						.slice(0, 8)
+						.map((artist) => (
+							<ArtistCard artist={artist} />
+						))
+					}
+				  </ul>				  
 			</div>
 
 			<div>
 				<h1 class="text-2xl font-bold">Álbums para ti</h1>
 				<ul class="flex py-4 gap-2 overflow-x-auto">
-					{albumsData.map((album) => (
-						<AlbumCard album={album} />
-					))}
+					{albumsData
+					  	.slice(0, 8)
+						.map((album) => (
+							<AlbumCard album={album} />
+						))
+					}
 				</ul>
 			</div>
 			
