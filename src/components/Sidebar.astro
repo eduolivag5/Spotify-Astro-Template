@@ -1,14 +1,14 @@
----
-import { Squares2X2Icon } from "@heroicons/react/24/outline"; 
+--- 
 import { PlusIcon, ArrowRightIcon  } from "@heroicons/react/24/solid";
 import PlaylistItemCard from "./PlaylistItemCard.astro";
 import { playlistsData } from "../lib/playlist";
 import type { Playlist } from "../lib/types";
+import LibraryIcon from "./LibraryIcon.astro";
 ---
 <div class="p-4">
     <div class="flex justify-between items-center text-gray-300">
         <div class="flex gap-2 items-center">
-            <Squares2X2Icon className="w-10 h-10" />
+            <LibraryIcon />
             <span class="text-lg font-bold">Tu biblioteca</span>
         </div>
         <div class="flex gap-4">

@@ -49,7 +49,15 @@ export const albumsData: Album[] = [
         artist: "BadBunny_artist",
         releaseYear: 2022,
         color: colors.yellow
-    },  
+    },
+    {
+        id: "BadBunny_album_003",
+        cover: "https://i.scdn.co/image/ab67616d00001e02bbd45c8d36e0e045ef640411",
+        name: "Debí tirar más fotos",
+        artist: "BadBunny_artist",
+        releaseYear: 2025,
+        color: colors.green
+    }, 
     {
         id: "Melendi_album_001",
         cover: "https://i.scdn.co/image/ab67616d0000b2734f6726623ac5818a1a1f945a",

@@ -4,7 +4,7 @@ export const artistsData: Artist[] = [
     {
         id: "BadBunny_artist",
         name: "Bad Bunny",
-        photo: "https://i.scdn.co/image/ab6761610000e5eb744a4243fb6cc938011a98f4",
+        photo: "https://i.scdn.co/image/ab6761610000517481f47f44084e0a09b5f0fa13",
         header: "BadBunny.jpg",
         topTracks: [
             "BadBunny001",
@@ -15,7 +15,8 @@ export const artistsData: Artist[] = [
         ],
         topAlbums: [
             "BadBunny_album_001",
-            "BadBunny_album_002"
+            "BadBunny_album_002",
+            "BadBunny_album_003"
         ],
     },
     {
