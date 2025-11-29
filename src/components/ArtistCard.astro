@@ -15,7 +15,7 @@ const { artist } = Astro.props;
     <div class="flex flex-col gap-2">
         <div class="relative flex-shrink-0">
             <img
-                src={artist.photo}
+                src={`/images/${artist.photo}.jpg`}
                 alt={artist.name}
                 class="object-cover w-32 h-32 md:w-40 md:h-40 rounded-full group-hover:brightness-50 transition-all duration-300"
             />

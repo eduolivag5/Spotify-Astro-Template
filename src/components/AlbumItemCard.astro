@@ -17,7 +17,7 @@ const { album } = Astro.props;
 
         <div class="relative flex-shrink-0">
             <img
-                src={album.cover}
+                src={`/images/${album.cover}.jpg`}
                 alt={album.name}
                 class="object-cover h-12 w-12 md:h-16 md:w-16 rounded-l-md group-hover:brightness-50 transition-all duration-300"
             />

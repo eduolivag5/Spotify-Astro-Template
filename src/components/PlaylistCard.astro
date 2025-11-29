@@ -16,7 +16,7 @@ const { playlist } = Astro.props;
     <div class="flex flex-col gap-2">
         <div class="relative flex-shrink-0">
             <img
-                src={playlist.cover}
+                src={`/images/${playlist.cover}.jpg`}
                 alt={playlist.name}
                 class="object-cover w-32 h-32 md:w-40 md:h-40 rounded-lg group-hover:brightness-50 transition-all duration-300"
             />

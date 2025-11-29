@@ -18,7 +18,7 @@ const { playlist, sidebar } = Astro.props;
 
         <div class="relative flex-shrink-0">
             <img
-                src={playlist.cover}
+                src={`/images/${playlist.cover}.jpg`}
                 alt={playlist.name}
                 class={`object-cover h-12 w-12 md:h-16 md:w-16 ${sidebar ? 'rounded-md' : 'rounded-l-md'} group-hover:brightness-50 transition-all duration-300`}
             />

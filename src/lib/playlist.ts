@@ -5,7 +5,7 @@ import { colors } from "./colors";
 export const playlistsData: Playlist[] = [
     {
         id: 'Playlist_001',
-        cover: 'https://i.scdn.co/image/ab67706f000000029b73cb54758543d78a8ae4e0',
+        cover: 'ab67706f000000029b73cb54758543d78a8ae4e0',
         name: 'Los 2000 España',
         artists: ['Melendi_artist', "Estopa_artist", "ElCantoDelLoco_artist"],
         color: colors.indigo,
@@ -16,7 +16,7 @@ export const playlistsData: Playlist[] = [
     },
     {
         id: 'Playlist_002',
-        cover: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8402780e9620415e86c96d2bf8',
+        cover: 'ab67706c0000da8402780e9620415e86c96d2bf8',
         name: 'Feid & Mora',
         artists: ["Feid_artist", "Mora_artist"],
         color: colors.green,
@@ -27,7 +27,7 @@ export const playlistsData: Playlist[] = [
     },
     {
         id: 'Playlist_003',
-        cover: 'https://i.scdn.co/image/ab67706f000000029c0eb2fdff534f803ea018e1',
+        cover: 'ab67706f000000029c0eb2fdff534f803ea018e1',
         name: 'This is Bad Bunny',
         artists: ["BadBunny_artist"],
         color: colors.orange,
@@ -38,7 +38,7 @@ export const playlistsData: Playlist[] = [
     },
     {
         id: 'Playlist_004',
-        cover: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847028f8505f75f8fbe4266163',
+        cover: 'ab67706c0000da841588d46eeb9d900b31b0e585',
         name: 'Myke Towers SETLIST',
         artists: ["MykeTowers_artist"],
         color: colors.blue,
@@ -49,7 +49,7 @@ export const playlistsData: Playlist[] = [
     },
     {
         id: 'Playlist_005',
-        cover: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da842c9fd150af5fb4d7fb350a93',
+        cover: 'ab67706c0000da842c9fd150af5fb4d7fb350a93',
         name: 'Lo mejor de Morat',
         artists: ["Morat_artist"],
         color: colors.red,
@@ -60,7 +60,7 @@ export const playlistsData: Playlist[] = [
     },
     {
         id: 'Playlist_006',
-        cover: 'https://i.scdn.co/image/ab67616d0000b2733ec066af4d33ea367f22cbee',
+        cover: 'ab67616d0000b2733ec066af4d33ea367f22cbee',
         name: 'Pop Latino 2024',
         artists: ["Aitana_artist", "Morat_artist", "Quevedo_artist"],
         color: colors.pink,
