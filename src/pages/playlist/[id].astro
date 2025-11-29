@@ -61,7 +61,7 @@ const playlistArtists = playlist.artists.map(artistId => artistsData.find(artist
             <div class="flex items-center gap-4">
               {playlistArtists.map(artist => (
                 <a href={`/artist/${artist?.id}`} class="flex items-center gap-1 hover:text-white">
-                  <img src={artist?.photo} class="h-6 w-6 rounded-full" alt={artist?.name} />
+                  <img src={`/images/${artist?.photo}.jpg`} class="h-6 w-6 rounded-full" alt={artist?.name} />
                   <span class="text-sm font-medium">{artist?.name}</span>
                 </a>
               ))}

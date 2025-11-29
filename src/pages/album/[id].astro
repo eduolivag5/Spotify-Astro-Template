@@ -62,7 +62,7 @@ const filteredTracks = tracksData.filter(track => track.album === album.id);
           </h1>
           <div class="text-gray-300">
             <a href={`/artist/${albumArtist?.id}`} class="flex items-center gap-2 hover:text-white">
-              <img src={albumArtist?.photo} class="h-6 w-6 rounded-full" alt={albumArtist?.name} />
+              <img src={`/images/${albumArtist?.photo}.jpg`} class="h-6 w-6 rounded-full" alt={albumArtist?.name} />
               <span class="text-sm font-medium">{albumArtist?.name}</span>
             </a>
             
