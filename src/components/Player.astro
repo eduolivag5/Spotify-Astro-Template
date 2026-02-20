@@ -24,7 +24,7 @@ const album = albumsData.find(album => album.id === track?.album);
 
     <div id="player-info" class="flex gap-2 items-center">
       <div class="w-10 h-10 md:w-14 md:h-14 rounded-md bg-gray-800 flex items-center justify-center">
-        <img src={album?.cover} alt="album cover" class="rounded-md" />
+        <img src={`/images/${album?.cover}.jpg`} alt="album cover" class="rounded-md" />
       </div>
       <div class="flex flex-col">
         <span class="text-sm md:text-base font-semibold">
